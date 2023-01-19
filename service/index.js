@@ -7,6 +7,14 @@ export default {
       .find({chatroom_id: args.chatroomId}).toArray()
     return messages
   },
+  async sendMessage(args) {
+    const result = await db.collection('message')
+      .insertMany([{
+        content: args.msg, sender_id: args.userId,
+        send_time: new Date().getTime(), chatroom_id: args.roomId
+      }])
+    return result
+  },
   async getUser(args) {
     const user = await db.collection('user')
       .find({ _id: new ObjectId(args.id) }).toArray()

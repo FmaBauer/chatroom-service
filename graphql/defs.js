@@ -18,7 +18,7 @@ export default `#graphql
     intro: String
   }
   type Message {
-    id: String
+    _id: String
     content: String
     send_time: String
     quote_message: Message
@@ -26,7 +26,7 @@ export default `#graphql
     chat_room: Chatroom
   }
   type Chatroom {
-    id: String
+    _id: String
     title: String
     # latest_message: [Message]
     members: [User]
