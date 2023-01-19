@@ -14,6 +14,9 @@ export default {
     sender(parent) {
       return service.getUser({ id: parent.sender_id })
     },
+    quote_message(parent) {
+      return service.getMessage({ id: parent.quote_message_id })
+    }
   },
   Chatroom: {
     members(parent) {

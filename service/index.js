@@ -4,14 +4,20 @@ import { ObjectId } from 'mongodb'
 export default {
   async getMessages(args) {
     const messages = await db.collection('message')
-      .find({chatroom_id: args.chatroomId}).toArray()
+      .find({ chatroom_id: args.chatroomId }).toArray()
     return messages
+  },
+  async getMessage(args) {
+    const messages = await db.collection('message')
+      .find({ _id: new ObjectId(args.id) }).toArray()
+    return messages[0]
   },
   async sendMessage(args) {
     const result = await db.collection('message')
       .insertMany([{
         content: args.msg, sender_id: args.userId,
-        send_time: new Date().getTime(), chatroom_id: args.roomId
+        send_time: new Date().getTime(), chatroom_id: args.roomId,
+        quote_message_id: args.quoteMsgId
       }])
     return result
   },

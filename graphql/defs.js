@@ -16,6 +16,7 @@ export default `#graphql
     short_name: String
     full_name: String
     intro: String
+    avator_url: String
   }
   type Message {
     _id: String
